@@ -28,7 +28,7 @@ export default function PTZControl({ ptzPos, setPtzPos, povImage }: any) {
           alt="Camera Feed"
           loading="lazy"
           style={{
-            transform: `translate(${ptzPos.x}%, ${ptzPos.y}%) scale(1.2)`,
+            transform: `translate(${ptzPos.x}%, ${ptzPos.y}%) scale(1.4)`,
             transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}
           className="absolute inset-0 w-full h-full object-cover z-0"

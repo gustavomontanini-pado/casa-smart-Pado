@@ -1,7 +1,7 @@
 export const indoorItems = [
   {
     id: 1,
-    text: "CAMERA INTERNA PTZ 1",
+    text: "CAMERA INTERNA PTZ",
     image: "/devices/indoor/camIn1_1.webp",
     imageWhite: "/devices/indoor/camIn1_2.webp",
     realImage: "/devices/realIndoor/camIn1_2.webp",
@@ -16,44 +16,13 @@ export const indoorItems = [
     ],
   },
   {
-    id: 2,
-    text: "CAMERA INTERNA PTZ 2",
-    image: "/devices/indoor/camIn2_1.webp",
-    imageWhite: "/devices/indoor/camIn2_2.webp",
-    realImage: "/devices/realIndoor/camIn2_2.webp",
-    actionImage: "/pov/inside/panoramic_bedroom.webp",
-    description:
-      "Câmera móvel com rotação de 360 graus. Cubra todos os ângulos sem pontos cegos",
-    specs: [
-      "Áudio Bidirecional",
-      "Detecção de movimento",
-      "Integração via Wi-fi",
-      "Conectividade Tuya",
-    ],
-  },
-  {
     id: 3,
-    text: "CAMERA INTERNA FIXA 1",
+    text: "CAMERA INTERNA FIXA",
     image: "/devices/indoor/camIn3_1.webp",
     imageWhite: "/devices/indoor/camIn3_2.webp",
     realImage: "/devices/realIndoor/camIn3_2.webp",
     actionImage: "/pov/inside/baby_room.webp",
     description: "Câmera interna com design minimalista fixa",
-    specs: [
-      "Áudio Bidirecional",
-      "Zoom Óptico 4x",
-      "Detecção de movimento",
-      "Integração via Wi-fi",
-    ],
-  },
-  {
-    id: 4,
-    text: "CAMERA INTERNA FIXA 2",
-    image: "/devices/indoor/camIn4_1.webp",
-    imageWhite: "/devices/indoor/camIn4_2.webp",
-    realImage: "/devices/realIndoor/camIn4_2.webp",
-    actionImage: "/pov/inside/living_room.webp",
-    description: "Câmera interna fixa",
     specs: [
       "Áudio Bidirecional",
       "Zoom Óptico 4x",

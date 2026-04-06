@@ -1,7 +1,7 @@
 export const outdoorItems = [
   {
     id: 1,
-    text: "CAMERA EXTERNA FIXA 1",
+    text: "CAMERA EXTERNA A BATERIA",
     image: "/devices/outdoor/bullet_bateria_1.webp",
     imageWhite: "/devices/outdoor/bullet_bateria_2.webp",
     realImage: "/devices/realOutdoor/bullet_bateria_2.webp",
@@ -17,22 +17,6 @@ export const outdoorItems = [
   },
   {
     id: 2,
-    text: "CAMPAINHA DE VIDEO",
-    image: "/devices/outdoor/campainha_video_2.webp",
-    imageWhite: "/devices/outdoor/campainha_video_1.webp",
-    realImage: "/devices/realOutdoor/campainha_video_2.webp",
-    actionImage: "/pov/outside/deliver.gif",
-    description:
-      "Atenda sua porta de qualquer lugar do mundo com áudio bidirecional e vídeo nítido.",
-    specs: [
-      "Vídeo 1080p Ultra-wide",
-      "Áudio Bidirecional",
-      "Integração com Sobrepor Elétrica",
-      "Resistente a intempéries",
-    ],
-  },
-  {
-    id: 3,
     text: "CAMERA EXTERNA PTZ",
     image: "/devices/outdoor/cam1_1.webp",
     imageWhite: "/devices/outdoor/camOut1_2.webp",
@@ -48,8 +32,8 @@ export const outdoorItems = [
     ],
   },
   {
-    id: 4,
-    text: "CAMERA EXTERNA FIXA 2", // Adjust texts as needed
+    id: 3,
+    text: "CAMERA EXTERNA BULLET", // Adjust texts as needed
     image: "/devices/outdoor/image_1.webp",
     imageWhite: "/devices/outdoor/image_2.webp",
     realImage: "/devices/realOutdoor/image_2.webp",
@@ -61,6 +45,22 @@ export const outdoorItems = [
       "Armazenamento em Nuvem",
       "Visão Noturna",
       "Áudio Bidirecional",
+    ],
+  },
+  {
+    id: 4,
+    text: "CAMPAINHA DE VIDEO",
+    image: "/devices/outdoor/campainha_video_2.webp",
+    imageWhite: "/devices/outdoor/campainha_video_1.webp",
+    realImage: "/devices/realOutdoor/campainha_video_2.webp",
+    actionImage: "/pov/outside/deliver.gif",
+    description:
+      "Atenda sua porta de qualquer lugar do mundo com áudio bidirecional e vídeo nítido.",
+    specs: [
+      "Vídeo 1080p Ultra-wide",
+      "Áudio Bidirecional",
+      "Integração com Sobrepor Elétrica",
+      "Resistente a intempéries",
     ],
   },
   {
