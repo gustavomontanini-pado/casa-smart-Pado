@@ -2,10 +2,10 @@ export const outdoorItems = [
   {
     id: 1,
     text: "CAMERA EXTERNA FIXA 1",
-    image: "/devices/outdoor/bullet_bateria_1.png",
-    imageWhite: "/devices/outdoor/bullet_bateria_2.png",
-    realImage: "/devices/realOutdoor/bullet_bateria_2.png",
-    actionImage: "/pov/outside/childInPool.png",
+    image: "/devices/outdoor/bullet_bateria_1.webp",
+    imageWhite: "/devices/outdoor/bullet_bateria_2.webp",
+    realImage: "/devices/realOutdoor/bullet_bateria_2.webp",
+    actionImage: "/pov/outside/childInPool.webp",
     description:
       "Monitoramento contínuo em alta definição com proteção contra intempéries. Ideal para muros e fachadas.",
     specs: [
@@ -18,9 +18,9 @@ export const outdoorItems = [
   {
     id: 2,
     text: "CAMPAINHA DE VIDEO",
-    image: "/devices/outdoor/campainha_video_2.png",
-    imageWhite: "/devices/outdoor/campainha_video_1.png",
-    realImage: "/devices/realOutdoor/campainha_video_2.jpg",
+    image: "/devices/outdoor/campainha_video_2.webp",
+    imageWhite: "/devices/outdoor/campainha_video_1.webp",
+    realImage: "/devices/realOutdoor/campainha_video_2.webp",
     actionImage: "/pov/outside/deliver.gif",
     description:
       "Atenda sua porta de qualquer lugar do mundo com áudio bidirecional e vídeo nítido.",
@@ -34,10 +34,10 @@ export const outdoorItems = [
   {
     id: 3,
     text: "CAMERA EXTERNA PTZ",
-    image: "/devices/outdoor/cam1_1.png",
-    imageWhite: "/devices/outdoor/camOut1_2.png",
-    realImage: "/devices/realOutdoor/camOut1_2.png",
-    actionImage: "/pov/outside/front-part.png",
+    image: "/devices/outdoor/cam1_1.webp",
+    imageWhite: "/devices/outdoor/camOut1_2.webp",
+    realImage: "/devices/realOutdoor/camOut1_2.webp",
+    actionImage: "/pov/outside/front-part.webp",
     description:
       "Câmera móvel com rotação de 360 graus. Cubra todos os ângulos do seu quintal sem pontos cegos.",
     specs: [
@@ -50,10 +50,10 @@ export const outdoorItems = [
   {
     id: 4,
     text: "CAMERA EXTERNA FIXA 2", // Adjust texts as needed
-    image: "/devices/outdoor/image_1.png",
-    imageWhite: "/devices/outdoor/image_2.png",
-    realImage: "/devices/realOutdoor/image_2.jpg",
-    actionImage: "/pov/outside/front-static.png",
+    image: "/devices/outdoor/image_1.webp",
+    imageWhite: "/devices/outdoor/image_2.webp",
+    realImage: "/devices/realOutdoor/image_2.webp",
+    actionImage: "/pov/outside/front-static.webp",
     description:
       "Câmera compacta com design discreto, perfeita para varandas e áreas gourmet.",
     specs: [
@@ -66,10 +66,10 @@ export const outdoorItems = [
   {
     id: 5,
     text: "OLHO MÁGICO",
-    image: "/devices/outdoor/olhoMagico_1.png",
-    imageWhite: "/devices/outdoor/olhoMagico_2.png",
-    realImage: "/devices/realOutdoor/olhoMagico_2.png",
-    actionImage: "/pov/outside/family_outside.png",
+    image: "/devices/outdoor/olhoMagico_1.webp",
+    imageWhite: "/devices/outdoor/olhoMagico_2.webp",
+    realImage: "/devices/realOutdoor/olhoMagico_2.webp",
+    actionImage: "/pov/outside/family_outside.webp",
     description:
       "Substitua seu olho mágico tradicional por um display digital de alta segurança.",
     specs: [
@@ -82,9 +82,9 @@ export const outdoorItems = [
   {
     id: 6,
     text: "SOBREPOR ELÉTRICA",
-    image: "/devices/outdoor/sobrepor_1.png",
-    imageWhite: "/devices/outdoor/sobrepor_2.png",
-    realImage: "/devices/realOutdoor/sobrepor_2.png",
+    image: "/devices/outdoor/sobrepor_1.webp",
+    imageWhite: "/devices/outdoor/sobrepor_2.webp",
+    realImage: "/devices/realOutdoor/sobrepor_2.webp",
     description: "Segurança prática e versátil para o dia a dia",
     specs: [
       "Acabamentos Escovados(IXE) e Preto(EP)",
@@ -96,10 +96,10 @@ export const outdoorItems = [
   {
     id: 7,
     text: "VIDEO PORTEIRO EXTERNO",
-    image: "/devices/outdoor/videoPorteiroFora_1.png",
-    imageWhite: "/devices/outdoor/videoPorteiroFora_2.png",
-    realImage: "/devices/realOutdoor/videoPorteiroFora_2.png",
-    actionImage: "/pov/outside/couple_outside.png",
+    image: "/devices/outdoor/videoPorteiroFora_1.webp",
+    imageWhite: "/devices/outdoor/videoPorteiroFora_2.webp",
+    realImage: "/devices/realOutdoor/videoPorteiroFora_2.webp",
+    actionImage: "/pov/outside/couple_outside.webp",
     description: "Solução premium de controle total de acesso",
     specs: [
       "Video HD de Alta Definição",

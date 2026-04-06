@@ -1,9 +1,7 @@
-import { useState, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { ArrowRight, FastForward, Home } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 import Threads from "./Threads.component.tsx";
 
-export default function FormScreen({ onComplete, onBack }: any) {
+export default function FormScreen({ onComplete, onBack, isExiting }: any) {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -12,14 +10,23 @@ export default function FormScreen({ onComplete, onBack }: any) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
 
-  // Refs for our custom slide logic
+  const [mounted, setMounted] = useState(false);
+
   const formRef = useRef<HTMLFormElement>(null);
   const submitBtnRef = useRef<HTMLButtonElement>(null);
-  const controls = useAnimation();
+
+  // Drag slider state
+  const [dragX, setDragX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
 
   const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    requestAnimationFrame(() => setMounted(true));
+  }, []);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -45,31 +52,42 @@ export default function FormScreen({ onComplete, onBack }: any) {
     }
   };
 
-  // --- SLIDER LOGIC ---
-  //@ts-ignore
-  const handleDragEnd = (event: any, info: any) => {
-    // If they drag it more than ~180px to the right
-    if (info.offset.x > 180) {
-      // 1. Check if the form is fully filled out
+  // --- POINTER-BASED DRAG LOGIC ---
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (isSubmitting || isUnlocked) return;
+    setIsDragging(true);
+    dragStartX.current = e.clientX - dragX;
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    const newX = Math.max(0, Math.min(224, e.clientX - dragStartX.current));
+    setDragX(newX);
+  };
+
+  const handlePointerUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    if (dragX > 180) {
+      // Check form validity
       if (formRef.current && !formRef.current.checkValidity()) {
-        // If missing fields: Snap back to start and trigger native browser warnings
-        controls.start({ x: 0 });
+        setDragX(0);
         submitBtnRef.current?.click();
         return;
       }
-
-      // 2. If valid: Lock it at the end and submit!
+      // Lock and submit
       setIsUnlocked(true);
-      controls.start({ x: 224 }); // Locks the thumb at the right edge
+      setDragX(224);
       submitBtnRef.current?.click();
     } else {
-      // Didn't drag far enough, snap back to 0
-      controls.start({ x: 0 });
+      // Snap back
+      setDragX(0);
     }
   };
 
   const handleSkip = () => {
-    // Create a fake user for testing purposes
     const fakeUser = {
       nome: "Test User",
       email: "test@pado.com",
@@ -80,38 +98,59 @@ export default function FormScreen({ onComplete, onBack }: any) {
   };
 
   return (
-    <motion.div
-      key="form-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed inset-0 z-9998 bg-black flex items-center justify-center px-6 md:px-12 py-12 overflow-y-auto"
+    <div
+      className={`fixed inset-0 z-9998 bg-black flex items-center justify-center px-6 md:px-12 py-12 overflow-y-auto transition-opacity duration-800 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        isExiting || !mounted ? "opacity-0" : "opacity-100"
+      }`}
     >
       <div style={{ width: "100%", height: "600px", position: "absolute" }}>
         <Threads amplitude={1} distance={0} enableMouseInteraction />
       </div>
 
+      {/* Back button */}
       <button
         onClick={onBack}
-        // THE FIX: Reduced the 'top' values across all breakpoints so it hugs the ceiling and clears the logo!
         className="absolute top-4 left-4 md:top-5 md:left-6 lg:top-8 lg:left-10 2xl:top-12 2xl:left-12 z-50 flex items-center gap-2 lg:gap-3 bg-white/5 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/10 px-4 py-2 lg:px-6 lg:py-3 2xl:px-8 2xl:py-4 rounded-full text-white/50 hover:text-white transition-all duration-300 shadow-lg group"
       >
-        <Home className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 2xl:w-6 2xl:h-6 opacity-50 group-hover:opacity-100 transition-opacity" />
+        {/* Home icon SVG */}
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 2xl:w-6 2xl:h-6 opacity-50 group-hover:opacity-100 transition-opacity"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
         <span className="text-[9px] md:text-[10px] lg:text-xs 2xl:text-sm font-bold tracking-widest uppercase">
           Voltar
         </span>
       </button>
 
+      {/* Skip button */}
       <button
         onClick={handleSkip}
-        // THE FIX: Matched the symmetrical 'top' values on the right side!
         className="absolute top-4 right-4 md:top-5 md:right-6 lg:top-8 lg:right-10 2xl:top-12 2xl:right-12 z-50 flex items-center gap-2 lg:gap-3 bg-white/5 hover:bg-white/10 active:bg-white/20 backdrop-blur-md border border-white/10 px-4 py-2 lg:px-6 lg:py-3 2xl:px-8 2xl:py-4 rounded-full text-white/50 hover:text-white transition-all duration-300 shadow-lg group"
       >
         <span className="text-[9px] md:text-[10px] lg:text-xs 2xl:text-sm font-bold tracking-widest uppercase">
           Pular
         </span>
-        <FastForward className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 2xl:w-6 2xl:h-6 opacity-50 group-hover:opacity-100 transition-opacity" />
+        {/* FastForward icon SVG */}
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 2xl:w-6 2xl:h-6 opacity-50 group-hover:opacity-100 transition-opacity"
+        >
+          <polygon points="13 19 22 12 13 5 13 19" />
+          <polygon points="2 19 11 12 2 5 2 19" />
+        </svg>
       </button>
 
       <div className="max-w-6xl w-full min-h-[80vh] md:h-[80vh] grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 py-10 md:py-0">
@@ -119,8 +158,9 @@ export default function FormScreen({ onComplete, onBack }: any) {
         <div className="flex flex-col justify-between gap-12 md:gap-0 h-full">
           <div>
             <img
-              src="/logo_pado_branca.png"
+              src="/logo_pado_branca.webp"
               alt="Pado Logo"
+              loading="lazy"
               className="h-8 md:h-12 w-auto object-contain mb-16 md:mb-0"
             />
           </div>
@@ -140,7 +180,7 @@ export default function FormScreen({ onComplete, onBack }: any) {
         <div className="flex items-center justify-end h-full">
           <div className="bg-[#111111] border border-white/10 rounded-3xl p-8 md:p-12 w-full max-w-md shadow-2xl">
             <form
-              ref={formRef} // Added ref here
+              ref={formRef}
               onSubmit={handleSubmit}
               className="flex flex-col gap-6"
               name="lead-form"
@@ -157,7 +197,6 @@ export default function FormScreen({ onComplete, onBack }: any) {
                   placeholder="nome completo"
                   value={formData.nome}
                   onChange={handleChange}
-                  // Made inputs slightly glassy too!
                   className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-white/40 transition-colors"
                 />
               </div>
@@ -188,13 +227,10 @@ export default function FormScreen({ onComplete, onBack }: any) {
                 />
               </div>
 
-              {/* HIDDEN NATIVE SUBMIT BUTTON */}
-              {/* We need this so HTML5 validation (required fields) still triggers correctly */}
               <button type="submit" ref={submitBtnRef} className="hidden" />
 
-              {/* NEW LIQUID GLASS SLIDER BUTTON */}
+              {/* DRAG SLIDER — native pointer events instead of framer-motion drag */}
               <div className="mt-4 relative w-70 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center overflow-hidden shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
-                {/* Background Text */}
                 <span className="absolute w-full text-center text-white/70 text-xs font-bold tracking-widest uppercase pointer-events-none select-none">
                   {isSubmitting
                     ? "Enviando..."
@@ -203,24 +239,38 @@ export default function FormScreen({ onComplete, onBack }: any) {
                       : "Deslize para enviar"}
                 </span>
 
-                {/* Draggable Glass Thumb */}
-                <motion.div
-                  drag={!isSubmitting && !isUnlocked ? "x" : false}
-                  dragConstraints={{ left: 0, right: 224 }} // 280px track - 48px thumb - 8px padding = 224
-                  dragElastic={0.05}
-                  onDragEnd={handleDragEnd}
-                  animate={controls}
+                {/* Draggable thumb */}
+                <div
+                  onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
+                  onPointerCancel={handlePointerUp}
+                  style={{
+                    transform: `translateX(${dragX}px)`,
+                    transition: isDragging ? "none" : "transform 0.3s ease-out",
+                    touchAction: "none",
+                  }}
                   className="absolute left-1 w-12 h-12 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10 shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:bg-white/30 transition-colors"
                 >
-                  <ArrowRight
+                  {/* ArrowRight SVG */}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className={`w-5 h-5 transition-colors ${isUnlocked ? "text-green-400" : "text-white"}`}
-                  />
-                </motion.div>
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

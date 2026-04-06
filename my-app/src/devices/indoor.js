@@ -2,10 +2,10 @@ export const indoorItems = [
   {
     id: 1,
     text: "CAMERA INTERNA PTZ 1",
-    image: "/devices/indoor/camIn1_1.png",
-    imageWhite: "/devices/indoor/camIn1_2.png",
-    realImage: "/devices/realIndoor/camIn1_2.png",
-    actionImage: "/pov/inside/living_panoramic.png",
+    image: "/devices/indoor/camIn1_1.webp",
+    imageWhite: "/devices/indoor/camIn1_2.webp",
+    realImage: "/devices/realIndoor/camIn1_2.webp",
+    actionImage: "/pov/inside/living_panoramic.webp",
     description:
       "Câmera móvel com rotação de 360 graus. Cubra todos os ângulos sem pontos cegos.",
     specs: [
@@ -18,10 +18,10 @@ export const indoorItems = [
   {
     id: 2,
     text: "CAMERA INTERNA PTZ 2",
-    image: "/devices/indoor/camIn2_1.png",
-    imageWhite: "/devices/indoor/camIn2_2.png",
-    realImage: "/devices/realIndoor/camIn2_2.png",
-    actionImage: "/pov/inside/panoramic_bedroom.png",
+    image: "/devices/indoor/camIn2_1.webp",
+    imageWhite: "/devices/indoor/camIn2_2.webp",
+    realImage: "/devices/realIndoor/camIn2_2.webp",
+    actionImage: "/pov/inside/panoramic_bedroom.webp",
     description:
       "Câmera móvel com rotação de 360 graus. Cubra todos os ângulos sem pontos cegos",
     specs: [
@@ -34,10 +34,10 @@ export const indoorItems = [
   {
     id: 3,
     text: "CAMERA INTERNA FIXA 1",
-    image: "/devices/indoor/camIn3_1.png",
-    imageWhite: "/devices/indoor/camIn3_2.png",
-    realImage: "/devices/realIndoor/camIn3_2.png",
-    actionImage: "/pov/inside/baby_room.png",
+    image: "/devices/indoor/camIn3_1.webp",
+    imageWhite: "/devices/indoor/camIn3_2.webp",
+    realImage: "/devices/realIndoor/camIn3_2.webp",
+    actionImage: "/pov/inside/baby_room.webp",
     description: "Câmera interna com design minimalista fixa",
     specs: [
       "Áudio Bidirecional",
@@ -49,10 +49,10 @@ export const indoorItems = [
   {
     id: 4,
     text: "CAMERA INTERNA FIXA 2",
-    image: "/devices/indoor/camIn4_1.png",
-    imageWhite: "/devices/indoor/camIn4_2.png",
-    realImage: "/devices/realIndoor/camIn4_2.png",
-    actionImage: "/pov/inside/living_room.png",
+    image: "/devices/indoor/camIn4_1.webp",
+    imageWhite: "/devices/indoor/camIn4_2.webp",
+    realImage: "/devices/realIndoor/camIn4_2.webp",
+    actionImage: "/pov/inside/living_room.webp",
     description: "Câmera interna fixa",
     specs: [
       "Áudio Bidirecional",
@@ -64,9 +64,9 @@ export const indoorItems = [
   {
     id: 5,
     text: "SENSOR MAGNÉTICO",
-    image: "/devices/indoor/doorMoveDetc_1.png",
-    imageWhite: "/devices/indoor/doorMoveDetc_2.png",
-    realImage: "/devices/realIndoor/doorMoveDetc_2.png",
+    image: "/devices/indoor/doorMoveDetc_1.webp",
+    imageWhite: "/devices/indoor/doorMoveDetc_2.webp",
+    realImage: "/devices/realIndoor/doorMoveDetc_2.webp",
     description: "Sensor infravermelho passivo de alta sensibilidade",
     specs: [
       "Reporta aberturas e fechamentos",
@@ -78,9 +78,9 @@ export const indoorItems = [
   {
     id: 6,
     text: "OLHO MÁGICO INTELIGENTE",
-    image: "/devices/indoor/olhoMagico_1.png",
-    imageWhite: "/devices/indoor/olhoMagico_2.png",
-    realImage: "/devices/realIndoor/olhoMagico_2.png",
+    image: "/devices/indoor/olhoMagico_1.webp",
+    imageWhite: "/devices/indoor/olhoMagico_2.webp",
+    realImage: "/devices/realIndoor/olhoMagico_2.webp",
     actionImage: "/pov/inside/deliver.gif",
     description: "Segurança sem fio e áudio bidirecional",
     specs: [
@@ -92,9 +92,9 @@ export const indoorItems = [
   {
     id: 7,
     text: "SENSOR DE MOVIMENTO",
-    image: "/devices/indoor/sensorMovimento_1.png",
-    imageWhite: "/devices/indoor/sensorMovimento_2.png",
-    realImage: "/devices/realIndoor/sensorMovimento_2.png",
+    image: "/devices/indoor/sensorMovimento_1.webp",
+    imageWhite: "/devices/indoor/sensorMovimento_2.webp",
+    realImage: "/devices/realIndoor/sensorMovimento_2.webp",
     description: "Detecta movimento instantaneamente",
     specs: [
       "Conectividade de 2.4GHz",
@@ -105,19 +105,19 @@ export const indoorItems = [
   {
     id: 8,
     text: "SIRENE ESTROBOSCÓPICA",
-    image: "/devices/indoor/sirene1_1.png",
-    imageWhite: "/devices/indoor/sirene1_2.png",
-    realImage: "/devices/realIndoor/sirene1_2.png",
+    image: "/devices/indoor/sirene1_1.webp",
+    imageWhite: "/devices/indoor/sirene1_2.webp",
+    realImage: "/devices/realIndoor/sirene1_2.webp",
     description: "Alarme sonoro e visual de alta intensidade",
     specs: ["Nível sonoro de 85dB", "Suporta até 50 sensores sem fio"],
   },
   {
     id: 9,
     text: "VIDEO PORTEIRO INTERNO",
-    image: "/devices/indoor/videoPorteiroFora_1.png",
-    imageWhite: "/devices/indoor/videoPorteiroFora_2.png",
-    realImage: "/devices/realIndoor/videoPorteiroFora_2.png",
-    actionImage: "/pov/inside/videoPorteiro.png",
+    image: "/devices/indoor/videoPorteiroFora_1.webp",
+    imageWhite: "/devices/indoor/videoPorteiroFora_2.webp",
+    realImage: "/devices/realIndoor/videoPorteiroFora_2.webp",
+    actionImage: "/pov/inside/videoPorteiro.webp",
     description: "Solução premium de controle total de acesso",
     specs: [
       "Video HD de Alta Definição",
